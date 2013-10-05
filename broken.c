@@ -63,13 +63,13 @@ int main(int argc, char **argv)
     char s5[] = "fig";
     char s6[] = "grape";
 
+    list_insert_ordered(NULL, &head);
     list_insert_ordered(s2, &head);
     list_insert_ordered(s3, &head);
     list_insert_ordered(s1, &head);
     list_insert_ordered(s5, &head);
     list_insert_ordered(s6, &head);
     list_insert_ordered(s4, &head);
-    list_insert_ordered(NULL, &head);
 
     list_print(head);
     list_clear(head);
