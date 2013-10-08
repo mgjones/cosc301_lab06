@@ -7,7 +7,9 @@ Lab 6: Testing and Debugging
 In this lab, you'll learn about facilities and programs for testing and
 debugging programs.  Your main task for this lab is to fix a piece of broken
 code.  You will use the gdb and valgrind tools to do this (described below).
-Once you've fixed the code, you can simply demo your fixes to me. Clone the
+Once you've fixed the code, you can simply demo your fixes to me.  (If you wish,
+you can paste the output of ``git diff`` in the Moodle submission box, but that's
+not necessary if you demo your work to me.)  Clone the
 git repo at <https://github.com/jsommers/cosc301_lab06> to get started.
 
 In the repo there is a file named ``broken.c``, which is the file you'll
