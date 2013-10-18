@@ -1,26 +1,29 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 
 struct node {
     char name[128];
-    struct node *next; 
+    struct node *next;
 };
 
 void list_insert_ordered(char *name,  struct node **head) {
-    struct node *newnode = malloc(sizeof(struct node));
-    strncpy(newnode->name, name, 127);
-    
+
+	struct node *newnode = malloc(sizeof(struct node));
+
+	strncpy(newnode->name, name, 127);
+
     if (name == NULL) {
         return;
     }
-        
+
     if (*head == NULL) {
         *head = newnode;
     }
-    
+
     if (strncasecmp(name, (*head)->name, 127) < 0) {
-        *head = newnode;    
+        *head = newnode;
         newnode->next = *head;
     }
 
@@ -30,7 +33,7 @@ void list_insert_ordered(char *name,  struct node **head) {
     while (curr->next != NULL && strncasecmp(name, curr->next->name, 127) >= 0) {
         curr = curr->next;
     }
-    
+
     curr->next = newnode;
 }
 
