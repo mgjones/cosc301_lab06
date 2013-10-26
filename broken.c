@@ -4,28 +4,34 @@
 #include <assert.h>
 
 struct node {
-    char name[128];
-    struct node *next;
+   	//char name[128];
+	char *name;
+	//char *name[128];
+	struct node *next;
 };
 
 void list_insert_ordered(char *name,  struct node **head) {
 
+/*	//printf("Name: %s", name);
 	struct node *newnode = malloc(sizeof(struct node));
-
-	strncpy(newnode->name, name, 127);
+	//printf("Name: %s", name);
+	//printf(head);
+	//(*newnode).name = (char) name;
+	char word = strncpy(newnode->name, name, 127);
 
     if (name == NULL) {
         return;
     }
 
-    if (*head == NULL) {
+    if (head == NULL) { //previously *head
         *head = newnode;
     }
 
     if (strncasecmp(name, (*head)->name, 127) < 0) {
-        *head = newnode;
-        newnode->next = *head;
-    }
+	//if (strcasecmp(name, (*head)->name) < 0){
+        	*head = newnode;
+        	newnode->next = *head;
+    	}
 
     struct node *curr = malloc(sizeof(head));
     curr = *head;
@@ -35,6 +41,64 @@ void list_insert_ordered(char *name,  struct node **head) {
     }
 
     curr->next = newnode;
+*/
+	//printf("Name: %s\n",name);
+	//printf("\n",head);
+	struct node *newnode = (struct node*) malloc(sizeof(struct node));
+	struct node *temp, *previous;
+
+	previous = &(*head);
+	//temp = &(*head);
+	temp = *head;
+	if (name == NULL){ return; }
+
+	else if ( *head == NULL){
+		//struct node *newnode = (struct node*) malloc(sizeof(struct node));
+		head = &newnode;
+		newnode->name = name;
+		newnode->next = NULL;
+		return;
+	}
+	while ( temp->next != NULL){
+		if (strcasecmp(temp->name, name) < 0){
+			//struct node *newnode = (struct node*) malloc(sizeof(struct node));
+			head = &newnode;
+			newnode->next = temp;
+			newnode->name = name;
+			temp = temp->next;
+			previous = previous->next;
+		}else if (strcasecmp(temp->name, name) >= 0){
+			newnode->name = name;
+			previous->next = newnode; //maybe &newnode
+			newnode->next = temp;
+		}
+	}
+	
+
+
+
+
+
+
+/*
+	while (*head != NULL){
+
+		if(strcasecmp(*name, curr->name) < 0 && (*head)->next == NULL){
+			struct node *insert = malloc(sizeof(struct node));
+			insert->name = name;
+			curr = &insert;
+
+		}else{
+			curr = curr->next;
+		}
+
+	}
+
+*/
+
+
+
+
 }
 
 
